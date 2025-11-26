@@ -15,8 +15,8 @@ class LivroAutorController {
   };
 
   delete = async (req, res) => {
-    const { idLivro, idAutor } = req.body;
-    const removed = await this.repository.delete(idLivro, idAutor);
+    const { idlivro, idautor } = req.body;
+    const removed = await this.repository.delete(idlivro, idautor);
     if (!removed) return res.status(404).json({ message: 'Associação não encontrada' });
     res.status(204).end();
   };

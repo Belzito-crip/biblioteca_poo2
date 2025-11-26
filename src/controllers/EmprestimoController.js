@@ -25,7 +25,7 @@ class EmprestimoController extends CrudController {
     if (!emprestimo) return res.status(404).json({ message: 'Empréstimo não encontrado' });
 
     const hoje = new Date().toISOString().substring(0, 10);
-    await this.repository.update(emprestimo.id, { dataDevolvido: hoje });
+    await this.repository.update(emprestimo.id, { dataDevolucao: hoje });
     await this.exemplarRepository.update(emprestimo.idexemplar, { status: 'disponivel' });
 
     const atualizado = await this.repository.findById(req.params.id);

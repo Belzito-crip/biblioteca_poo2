@@ -22,7 +22,7 @@
         <th>ID Exemplar</th>
         <th>ID Usuário</th>
         <th>Data Empréstimo</th>
-        <th>Data Devolução</th>
+        <th>Data Devolvido</th>
         <th>Ação</th>
       </tr>
     </thead>
@@ -38,8 +38,9 @@
             <td>${e.idexemplar}</td>
             <td>${e.idusuario}</td>
             <td>${e.dataEmprestimo}</td>
-            <td>${e.dataDevolucao}</td>
-            <td>${e.dataDevolucao ? 'Concluído' : `<button data-id="${e.id}" class="btn-devolver">Devolver</button>`}</td>
+            <td>${e.dataDevolucao || '-'}</td>
+            <td>${e.acao ? 'Concluído' : `<button data-id="${e.id}" class="btn-devolver">Devolver</button>`}</td>
+
           </tr>`);
         $('#emprestimo-table tbody').html(linhas.join(''));
       });
