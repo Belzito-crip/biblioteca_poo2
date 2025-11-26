@@ -1,12 +1,11 @@
 const BaseModel = require('./BaseModel');
 
 class Emprestimo extends BaseModel {
-  constructor({ id, idExemplar, idUsuario, dataEmprestimo, dataDevolucao, dataDevolvido }) {
+  constructor({ id, idexemplar, idusuario, dataEmprestimo, dataDevolvido }) {
     super(id);
-    this.idExemplar = idExemplar;
-    this.idUsuario = idUsuario;
+    this.idexemplar = idexemplar;
+    this.idusuario = idusuario;
     this.dataEmprestimo = dataEmprestimo;
-    this.dataDevolucao = dataDevolucao;
     this.dataDevolvido = dataDevolvido || null;
   }
 

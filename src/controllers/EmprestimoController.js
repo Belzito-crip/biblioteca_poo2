@@ -7,7 +7,7 @@ class EmprestimoController extends CrudController {
   }
 
   criarEmprestimo = async (req, res) => {
-    const exemplar = await this.exemplarRepository.findById(req.body.idExemplar);
+    const exemplar = await this.exemplarRepository.findById(req.body.idexemplar);
     if (!exemplar) return res.status(400).json({ message: 'Exemplar não existe' });
     if (exemplar.status === 'emprestado') return res.status(400).json({ message: 'Exemplar já emprestado' });
 
@@ -26,7 +26,7 @@ class EmprestimoController extends CrudController {
 
     const hoje = new Date().toISOString().substring(0, 10);
     await this.repository.update(emprestimo.id, { dataDevolvido: hoje });
-    await this.exemplarRepository.update(emprestimo.idExemplar, { status: 'disponivel' });
+    await this.exemplarRepository.update(emprestimo.idexemplar, { status: 'disponivel' });
 
     const atualizado = await this.repository.findById(req.params.id);
 

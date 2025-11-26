@@ -1,10 +1,10 @@
 const BaseModel = require('./BaseModel');
 
 class Exemplar extends BaseModel {
-  constructor({ id, idLivro, codigoDeBarras, status }) {
+  constructor({ id, idexemplar, codigoExemplar, status }) {
     super(id);
-    this.idLivro = idLivro;
-    this.codigoDeBarras = codigoDeBarras;
+    this.idexemplar = idexemplar;
+    this.codigoExemplar = codigoExemplar;
     this.status = status; // disponivel, emprestado, reservado
   }
 }

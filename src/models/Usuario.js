@@ -1,12 +1,12 @@
 const BaseModel = require('./BaseModel');
 
 class Usuario extends BaseModel {
-  constructor({ id, nome, telefone, email, cargo }) {
+  constructor({ id, nome, telefone, email, tipoUser }) {
     super(id);
     this.nome = nome;
     this.telefone = telefone;
     this.email = email;
-    this.cargo = cargo;
+    this.tipoUser = tipoUser;
   }
 }
 

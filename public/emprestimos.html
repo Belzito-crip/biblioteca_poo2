@@ -12,7 +12,6 @@
   <form id="emprestimo-form">
     <input type="number" id="idExemplar" placeholder="ID do exemplar" required>
     <input type="number" id="idUsuario" placeholder="ID do usuário" required>
-    <input type="date" id="dataDevolucao" placeholder="Devolução prevista" required>
     <button type="submit">Registrar</button>
   </form>
 
@@ -24,7 +23,6 @@
         <th>ID Usuário</th>
         <th>Data Empréstimo</th>
         <th>Data Devolução</th>
-        <th>Data Devolvido</th>
         <th>Ação</th>
       </tr>
     </thead>
@@ -37,12 +35,11 @@
         const linhas = data.map(e => `
           <tr>
             <td>${e.id}</td>
-            <td>${e.idExemplar}</td>
-            <td>${e.idUsuario}</td>
+            <td>${e.idexemplar}</td>
+            <td>${e.idusuario}</td>
             <td>${e.dataEmprestimo}</td>
             <td>${e.dataDevolucao}</td>
-            <td>${e.dataDevolvido || '-'}</td>
-            <td>${e.dataDevolvido ? 'Concluído' : `<button data-id="${e.id}" class="btn-devolver">Devolver</button>`}</td>
+            <td>${e.dataDevolucao ? 'Concluído' : `<button data-id="${e.id}" class="btn-devolver">Devolver</button>`}</td>
           </tr>`);
         $('#emprestimo-table tbody').html(linhas.join(''));
       });
@@ -51,9 +48,8 @@
     $('#emprestimo-form').on('submit', function(event) {
       event.preventDefault();
       $.post('/api/emprestimos', {
-        idExemplar: Number($('#idExemplar').val()),
-        idUsuario: Number($('#idUsuario').val()),
-        dataDevolucao: $('#dataDevolucao').val()
+        idexemplar: Number($('#idExemplar').val()),
+        idusuario: Number($('#idUsuario').val())
       }).done(() => {
         this.reset();
         carregarEmprestimos();
